@@ -56,9 +56,10 @@
  * nozzle from crashing into the build surface. These values can be changed
  * in the Marlin UI so ballpark values are fine.
 */
-#define X_PROBE_OFFSET 28 // GR valori del mio fan holder
-#define Y_PROBE_OFFSET 5  // GR valori del mio fan holder
-#define Z_PROBE_OFFSET -0.80  // GR valori del mio fan holder
+// filios
+#define X_PROBE_OFFSET 33 // filios // GR valori del mio fan holder
+#define Y_PROBE_OFFSET 5  // filios // GR valori del mio fan holder
+#define Z_PROBE_OFFSET -2.43  // filios // GR valori del mio fan holder
 
 //===========================================================================
 //============================= Getting Started =============================
@@ -712,9 +713,16 @@
     #define DEFAULT_Ki_LIST {   1.08,   1.08 }
     #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
-    #define DEFAULT_Kp  13.50 // GR rilevati con Pronterface sulla mia stampante
-    #define DEFAULT_Ki   0.98 // GR rilevati con Pronterface sulla mia stampante
-    #define DEFAULT_Kd  46.5 // GR rilevati con Pronterface sulla mia stampante
+    // #define DEFAULT_Kp  13.50 // GR rilevati con Pronterface sulla mia stampante
+    // #define DEFAULT_Ki   0.98 // GR rilevati con Pronterface sulla mia stampante
+    // #define DEFAULT_Kd  46.5 // GR rilevati con Pronterface sulla mia stampante
+    // filios
+    // #define DEFAULT_Kp 14.82
+    // #define DEFAULT_Ki 1.08
+    // #define DEFAULT_Kd 50.98
+    #define DEFAULT_Kp 14.05
+    #define DEFAULT_Ki 1.03
+    #define DEFAULT_Kd 47.78
   #endif
 #else
   #define BANG_MAX 255    // Limit hotend current while in bang-bang mode; 255=full current
@@ -1271,7 +1279,8 @@
  * Override with M92
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160, 160, 800, 825 }
+// #define DEFAULT_AXIS_STEPS_PER_UNIT   { 160, 160, 800, 825 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 161, 161, 800, 816 } // filios
 
 /**
  * Enable support for M92. Disable to save at least ~530 bytes of flash.
@@ -1296,7 +1305,7 @@
  * Override with M201
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 100, 5000 }
+#define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 100, 1000 }
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -1331,8 +1340,8 @@
  */
 #define CLASSIC_JERK
 #if ENABLED(CLASSIC_JERK)
-  #define DEFAULT_XJERK 9.0
-  #define DEFAULT_YJERK 9.0
+  #define DEFAULT_XJERK 15.0
+  #define DEFAULT_YJERK 15.0
   #define DEFAULT_ZJERK  0.4
   //#define DEFAULT_IJERK  0.3
   //#define DEFAULT_JJERK  0.3
@@ -1345,11 +1354,11 @@
 
   //#define LIMITED_JERK_EDITING        // Limit edit via M205 or LCD to DEFAULT_aJERK * 2
   #if ENABLED(LIMITED_JERK_EDITING)
-    #define MAX_JERK_EDIT_VALUES { 20, 20, 0.6, 15 } // ...or, set your own edit limits
+    #define MAX_JERK_EDIT_VALUES { 20, 20, 0.6, 10 } // ...or, set your own edit limits
   #endif
 #endif
 
-#define DEFAULT_EJERK    10.0  // May be used by Linear Advance	// GR era 5 Linear Advance vuole almeno 10
+#define DEFAULT_EJERK    15.0  // May be used by Linear Advance	// GR era 5 Linear Advance vuole almeno 10
 
 /**
  * Junction Deviation Factor
@@ -1745,7 +1754,7 @@
 // Require minimum nozzle and/or bed temperature for probing
 //#define PREHEAT_BEFORE_PROBING
 #if ENABLED(PREHEAT_BEFORE_PROBING)
-  #define PROBING_NOZZLE_TEMP 210   // (°C) Only applies to E0 at this time // GR era 120
+  #define PROBING_NOZZLE_TEMP 120   // filios // (°C) Only applies to E0 at this time // GR era 120
   #define PROBING_BED_TEMP     60   // GR era 50
 #endif
 
@@ -2103,7 +2112,7 @@
  */
 // #define PREHEAT_BEFORE_LEVELING  // GR commento nessun preriscaldamento prima del livellamento
 #if ENABLED(PREHEAT_BEFORE_LEVELING)
-  #define LEVELING_NOZZLE_TEMP 210   // (°C) Only applies to E0 at this time  // GR era 120
+  #define LEVELING_NOZZLE_TEMP 120  // filios // (°C) Only applies to E0 at this time  // GR era 120
   #define LEVELING_BED_TEMP     60  // GR era 50
 #endif
 
@@ -2444,7 +2453,7 @@
 // Preheat Constants - Up to 10 are supported without changes
 //
 #define PREHEAT_1_LABEL       "PLA"
-#define PREHEAT_1_TEMP_HOTEND 210
+#define PREHEAT_1_TEMP_HOTEND 180
 #define PREHEAT_1_TEMP_BED     60
 #define PREHEAT_1_TEMP_CHAMBER 35
 #define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255
